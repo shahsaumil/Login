@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { RepoModel } from './repos.mode';
 
 @Component({
   selector: 'app-repos',
@@ -8,7 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ReposComponent implements OnInit {
 
   @Input() repoUrl: string;
-  repos = [];
+  repos: RepoModel[];
+  // or you can keep it simple to "repos: any[];"
 
   constructor() { }
 
