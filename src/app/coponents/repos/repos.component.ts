@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-repos',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./repos.component.css']
 })
 export class ReposComponent implements OnInit {
+
+  @Input() repoUrl: string;
+  repos = [];
 
   constructor() { }
 
