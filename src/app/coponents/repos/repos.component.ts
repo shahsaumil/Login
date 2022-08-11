@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ChangeDetectorRef } from '@angular/core';
+import { GithubService } from 'src/app/services/github.service';
+import { RepoModel } from './repos.mode';
 
 @Component({
   selector: 'app-repos',
@@ -8,11 +10,21 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ReposComponent implements OnInit {
 
   @Input() repoUrl: string;
-  repos = [];
-
-  constructor() { }
+  repos: RepoModel[];
+  // or you can keep it simple to "repos: any[];"
+  constructor(private githubService: GithubService, private ref: ChangeDetectorRef) { 
+     
+  }
 
   ngOnInit(): void {
   }
 
+  ngOncganges(): void {
+    if(this.repoUrl){
+      this.githubService.getRepos(this.repoUrl).subscribe(
+        (repos: []) => {this.repos = repos;} )
+    }else{
+
+    }
+  }
 }
