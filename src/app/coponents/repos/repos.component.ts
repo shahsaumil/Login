@@ -22,7 +22,7 @@ export class ReposComponent implements OnInit {
   ngOncganges(): void {
     if(this.repoUrl){
       this.githubService.getRepos(this.repoUrl).subscribe(
-        (repos: []) => {this.repos = repos;} )
+        (repos: any) => {this.repos = repos;} )
     }else{
 
     }
